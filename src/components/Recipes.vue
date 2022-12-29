@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>{{ msg }}</h1>
-    <b-row :cols="columns">
+    <b-row cols="5">
       <b-card no-body
               v-for="recipe in recipes" :key="recipe.name" :title="recipe.name"
       >
@@ -19,8 +19,7 @@ export default {
   data () {
     return {
       msg: 'Here\'s all of the meals we have recipes for at the minute.',
-      recipes: [],
-      columns: 0
+      recipes: []
     }
   },
   methods: {
@@ -28,7 +27,6 @@ export default {
       axios.get('https://mxlcy3tgca.execute-api.eu-west-2.amazonaws.com/default/recipes')
         .then(function (response) {
           this.recipes = response.data.sort((a, b) => a.name.localeCompare(b.name))
-          this.columns = this.recipes.length > 5 ? this.recipes.length % 5 : 5
         }.bind(this))
         .catch(function (error) {
           this.axiosError = error

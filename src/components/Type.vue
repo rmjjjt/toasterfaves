@@ -1,7 +1,6 @@
 <template>
   <div>
-    <h1>Here's some info about {{this.$route.params.id}}:</h1>
-    <p>There are {{type.meal.length}} {{this.$route.params.id.toLowerCase()}} recipes. They are:</p>
+    <h1>There {{type.meal.length === 1 ? 'is' : 'are'}} {{type.meal.length}} {{this.$route.params.id.toLowerCase()}} recipe{{type.meal.length === 1 ? '' : 's'}}. {{type.meal.length === 1 ? 'It is' : 'They are'}}:</h1>
     <ul v-for="meal in type.meal" :key="meal.name">
       <li><router-link :to="'\/meal\/' + meal.name">{{meal.name.charAt(0).toUpperCase() + meal.name.slice(1)}}</router-link></li>
     </ul>
@@ -22,9 +21,8 @@ export default {
   props: ['id'],
   methods: {
     loadAxios: function async () {
-      axios.get('https://mxlcy3tgca.execute-api.eu-west-2.amazonaws.com/default/recipes?meal=' + this.$route.params.id)
+      axios.get('https://mxlcy3tgca.execute-api.eu-west-2.amazonaws.com/default/types/' + this.$route.params.id)
         .then(function (response) {
-          console.log(response)
           response.data = response.data.sort((a, b) => a.name.localeCompare(b.name))
           this.type.meal = response.data
         }.bind(this))

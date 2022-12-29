@@ -51,11 +51,24 @@ export default {
         }.bind(this))
     },
     filterListByIngredient: function (searchText) {
-      let filteredList = this.recipeList.filter(recipe => {
-        console.log('ings', Object.keys(recipe.ingredients))
-        return Object.keys(recipe.ingredients).some(ing => ing.toLowerCase().includes(searchText.toLowerCase()))
-      })
-      this.foundRecipe = filteredList.sort((a, b) => a.name.localeCompare(b.name))
+      let filteredList
+      if (searchText.includes(',')) {
+        const ingsToFind = searchText.split(',')
+        // recipe.ingredients should include all ings as long as they have length
+        filteredList = this.recipeList.filter(recipe => {
+          return ingsToFind.every(ing => {
+            if (ing.length > 0) {
+              return Object.keys(recipe.ingredients).some(innerIng => innerIng.includes(ing.toLowerCase()))
+            } else return true
+          })
+        })
+        this.foundRecipe = filteredList.sort((a, b) => a.name.localeCompare(b.name))
+      } else {
+        filteredList = this.recipeList.filter(recipe => {
+          return Object.keys(recipe.ingredients).some(ing => ing.toLowerCase().includes(searchText.toLowerCase()))
+        })
+        this.foundRecipe = filteredList.sort((a, b) => a.name.localeCompare(b.name))
+      }
       if (searchText.length === 0) {
         this.foundRecipe = []
       }

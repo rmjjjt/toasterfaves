@@ -1,8 +1,7 @@
 <template>
   <div>
     <h1>{{ msg }}</h1>
-    <p>Here are all of the recipe types we have:</p>
-    <b-row cols="2">
+    <b-row cols="4">
         <b-card no-body
                 v-for="type in types" :key="type" :title="type"
         >
@@ -19,7 +18,7 @@ export default {
   name: 'Types',
   data () {
     return {
-      msg: 'Here\'s all of the types or recipes we have at the minute.',
+      msg: 'Here\'s all of the types or recipes we have at the minute"',
       types: []
     }
   },
@@ -30,8 +29,8 @@ export default {
           response.data.forEach(recipe => {
             this.types = this.types.concat(recipe.meal)
           })
-          this.types = new Set(this.types)
           this.types = this.types.sort((a, b) => a.localeCompare(b))
+          this.types = new Set(this.types)
         }.bind(this))
         .catch(function (error) {
           this.axiosError = error

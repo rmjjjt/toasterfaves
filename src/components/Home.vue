@@ -11,7 +11,7 @@ export default {
   data () {
     return {
       msg: 'Our favourite meals - at your table',
-      convertedContent: '<p>Welcome to the culinary delights of the family Toasterface.' +
+      convertedContent: '<p>Welcome to the culinary delights of the family Toasterface. ' +
         'We are a famliy of five living in Bath, UK. These are the recipes we use for cooking.</br>' +
         'Stored through the ages in the most ancient, crusty and totally righteous of recipe books, it ' +
         'is time for them to be digitised before being lost for all eternity.</br>' +

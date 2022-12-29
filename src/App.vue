@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <a href="/"><img style="width: 50%; margin: auto;" src="./assets/logo.png"></a>
+    <a href="/toasterfaves"><img style="width: 50%; margin: auto;" src="./assets/logo.png"></a>
     <br>
     <Nav />
   </div>
