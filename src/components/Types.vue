@@ -18,7 +18,7 @@ export default {
   name: 'Types',
   data () {
     return {
-      msg: 'Here\'s all of the types or recipes we have at the minute"',
+      msg: 'Here\'s all of the types or recipes we have at the minute:',
       types: []
     }
   },
