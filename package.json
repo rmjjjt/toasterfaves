@@ -5,7 +5,7 @@
   "author": "Rhymes Toasterface <rhymes@triplejdeveloping.com>",
   "private": true,
   "scripts": {
-    "deploy": "npm run build && git add dist && git commit -m \"Update dist\" && git push origin main",
+    "deploy": "npm run build && git add dist && git commit -m \"Update docs\" && git push origin main",
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
